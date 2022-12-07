@@ -8,7 +8,6 @@
 #int put, turn, all, done, pass, count, value, i,
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
 
-turn = 0
 mobility = 0
 flip = 0
 is_pass = 0
@@ -18,8 +17,8 @@ directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 #
 #void check()
 #{
-def check(move):
-    global turn, mobility, flip
+def check(move, turn):
+    global mobility, flip
 #    if (map[put] == 0)
     if board[move] == 0:
 #        for (i=0; i<8; i++) {
@@ -65,7 +64,8 @@ h = " - o x\n"
 #
 #int main()
 def reversi(debug=False):
-    global board, turn, mobility, flip
+    global board, mobility, flip
+    turn = 1
 #{
 #    // 0:コマ無し
 #    // 1:1player
@@ -80,7 +80,6 @@ def reversi(debug=False):
         board[i*9] = 3
         board[40] = 1
         board[50] = 1
-        turn = 1
         is_pass = 1
 
 #    for (;; all = done = 0) { // 毎回allとdoneを初期化
@@ -93,7 +92,7 @@ def reversi(debug=False):
 #            check(), printf("%.2s",&h[map[put]*2]);
 #
         for i in range(9, 82):
-            check(i)
+            check(i, turn)
             display = board[i] * 2
             print(h[display:display+2], end="")
 
@@ -117,7 +116,7 @@ def reversi(debug=False):
                         move = x + y * 9
                 else:
                     move += 1
-                check(move)
+                check(move, turn)
 #
 #        else if(pass)
 #            // 駒は置けない
@@ -140,6 +139,7 @@ def reversi(debug=False):
 #    return 0;
 #}
     return board
+
 
 if __name__ == '__main__':
     reversi()
