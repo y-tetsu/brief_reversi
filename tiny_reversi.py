@@ -67,7 +67,8 @@ h = " - o x\n"
 
 #
 #int main()
-if __name__ == '__main__':
+def reversi(debug=False):
+    global board, move, turn, mobility, flip, index
 #{
 #    // 0:コマ無し
 #    // 1:1player
@@ -114,12 +115,11 @@ if __name__ == '__main__':
             move = 8
             while mobility == 8:
                 if turn == 2:
-                    # (user)
-                    move, index = [int(i) for i in input().split()]
-                    move += index * 9
-
-                    # (com)
-                    #move += 1
+                    if debug:
+                        move += 1
+                    else:
+                        move, index = [int(i) for i in input().split()]
+                        move += index * 9
                 else:
                     move += 1
                 check()
@@ -144,3 +144,7 @@ if __name__ == '__main__':
 #    }
 #    return 0;
 #}
+    return board
+
+if __name__ == '__main__':
+    reversi()
