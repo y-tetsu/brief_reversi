@@ -86,7 +86,7 @@ def reversi(debug=False):
         for i in range(9, 82):
             if check(board, i, turn, False):
                 has_mobility = True
-                pass_cnt = 0
+                no_pass = True
             display = board[i] * 2
             print(disc[display:display+2], end="")
 
@@ -113,8 +113,8 @@ def reversi(debug=False):
 #        else if(pass)
 #            // 駒は置けない
 #            pass=0,printf("pass");
-        elif pass_cnt == 0:
-            pass_cnt += 1
+        elif no_pass:
+            no_pass = False
             print("pass")
 
 #        else
