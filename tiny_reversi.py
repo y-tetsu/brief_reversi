@@ -59,6 +59,7 @@ def reversi(debug=False):
     disc = " - o x\n"
     board = [0] * 91
     turn = 1
+    pre_pass = False
 #{
 #    // 0:コマ無し
 #    // 1:1player
@@ -81,7 +82,7 @@ def reversi(debug=False):
 #
         for i in range(9, 82):
             if check(board, i, turn, False):
-                can_move = no_pass = True
+                can_move = True
             display = board[i] * 2
             print(disc[display:display+2], end="")
 
@@ -93,6 +94,7 @@ def reversi(debug=False):
 #            for(done = all = pass = put = 8; all==8; check())
 #                turn - 2 ? (scanf("%d %d",&put,&i), put+=i*9): ++put;
             move = 8
+            pre_pass = False
             while True:
                 if turn == 2:
                     if debug:
@@ -108,8 +110,8 @@ def reversi(debug=False):
 #        else if(pass)
 #            // 駒は置けない
 #            pass=0,printf("pass");
-        elif no_pass:
-            no_pass = False
+        elif not pre_pass:
+            pre_pass = True
             print("pass")
 
 #        else
