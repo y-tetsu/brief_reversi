@@ -54,11 +54,11 @@ def check(board, move, turn, flip=False):
 #
 # // mapに対応するオセロ駒＆改行
 #char *h=" - o x\n";
-h = " - o x\n"
 
 #
 #int main()
 def reversi(debug=False):
+    disc = " - o x\n"
     board = [0] * 91
     turn = 1
 #{
@@ -88,7 +88,7 @@ def reversi(debug=False):
                 has_mobility = True
                 pass_cnt = 0
             display = board[i] * 2
-            print(h[display:display+2], end="")
+            print(disc[display:display+2], end="")
 
 #        if(all)
         if has_mobility:
