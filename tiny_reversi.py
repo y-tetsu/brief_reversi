@@ -40,11 +40,11 @@ def check(board, move, turn, flip=False):
 #                    do
 #                        map[value] = turn, value += dir[i];
 #                    while (map[value] != turn);
-                    board[value] = turn
-                    value += directions[i];
-                    while board[value] != turn:
+                    while True:
                         board[value] = turn
                         value += directions[i];
+                        if board[value] == turn:
+                            break
 #            }
 #        }
     return can_move
