@@ -8,7 +8,6 @@
 #int put, turn, all, done, pass, count, value, i,
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
 
-move = 0
 turn = 0
 mobility = 0
 flip = 0
@@ -19,8 +18,8 @@ directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 #
 #void check()
 #{
-def check():
-    global move, turn, mobility, flip
+def check(move):
+    global turn, mobility, flip
 #    if (map[put] == 0)
     if board[move] == 0:
 #        for (i=0; i<8; i++) {
@@ -66,7 +65,7 @@ h = " - o x\n"
 #
 #int main()
 def reversi(debug=False):
-    global board, move, turn, mobility, flip
+    global board, turn, mobility, flip
 #{
 #    // 0:コマ無し
 #    // 1:1player
@@ -94,11 +93,9 @@ def reversi(debug=False):
 #            check(), printf("%.2s",&h[map[put]*2]);
 #
         for i in range(9, 82):
-            move = i
-            check()
-            display = board[move] * 2
+            check(i)
+            display = board[i] * 2
             print(h[display:display+2], end="")
-            move += 1
 
 #        if(all)
         if mobility:
@@ -120,7 +117,7 @@ def reversi(debug=False):
                         move = x + y * 9
                 else:
                     move += 1
-                check()
+                check(move)
 #
 #        else if(pass)
 #            // 駒は置けない
