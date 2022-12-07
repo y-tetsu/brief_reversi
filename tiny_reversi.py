@@ -96,24 +96,18 @@ def reversi(debug=False):
     for i in range(1, 10):
         board[i*9] = 3
     while True:
-        can_move = False
+        move = 0
         for i in range(9, 82):
-            if check(board, i, turn, False):
-                can_move = True
+            if check(board, i, turn, False) and not move:
+                move = i
             display = board[i] * 2
             print(disc[display:display+2], end="")
-        if can_move:
-            move = 8
+        if move:
             pre_pass = False
             while True:
-                if turn == 2:
-                    if debug:
-                        move += 1
-                    else:
-                        x, y = [int(i) for i in input().split()]
-                        move = x + y * 9
-                else:
-                    move += 1
+                if not debug and turn == 2:
+                    x, y = [int(i) for i in input().split()]
+                    move = x + y * 9
                 if check(board, move, turn, True):
                     break
         else:
