@@ -22,14 +22,12 @@ def check(board, move, turn, flip=False):
 #            for (count = 0, value = put+dir[i];
 #                 map[value] == 3-turn; value += dir[i])
 #                count++;
-            count = 0
-            value = move + directions[i]
+            count = value = move + directions[i]
             while board[value] == 3 - turn:
-                count += 1
                 value += directions[i]
 #
 #            if (count && map[value] == turn) {
-            if count and board[value] == turn:
+            if count != value and board[value] == turn:
 #                // 1枚以上存在し、その上端が自分のコマなら
 #                all += count;
 #                value  = put;
