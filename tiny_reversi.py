@@ -103,8 +103,7 @@ def reversi(debug=False):
             display = board[i] * 2
             print(disc[display:display+2], end="")
         if move:
-            pre_pass = False
-            while True:
+            while not (pre_pass := False):
                 if not debug and turn == 2:
                     x, y = [int(i) for i in input().split()]
                     move = x + y * 9

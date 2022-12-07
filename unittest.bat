@@ -1,1 +1,1 @@
-py -3.7 -m unittest discover tests -v
+py -3.9 -m unittest discover tests -v
