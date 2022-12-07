@@ -7,13 +7,11 @@
 # // 盤を走査する場合、縦横斜め方向に向かうために足されるべき数
 #int put, turn, all, done, pass, count, value, i,
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
-
-directions = [-10, -9, -8, -1, 1, 8, 9, 10]
-
 #
 #void check()
 #{
 def check(board, move, turn, flip=False):
+    directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 #    if (map[put] == 0)
     can_move = False
     if board[move] == 0:
