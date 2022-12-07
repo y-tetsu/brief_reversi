@@ -8,7 +8,6 @@
 #int put, turn, all, done, pass, count, value, i,
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
 
-index = 0
 move = 0
 turn = 0
 mobility = 0
@@ -21,12 +20,11 @@ directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 #void check()
 #{
 def check():
-    global move, turn, mobility, flip, index
+    global move, turn, mobility, flip
 #    if (map[put] == 0)
     if board[move] == 0:
 #        for (i=0; i<8; i++) {
         for i in range(8):
-            index = i
 #            // 8方向走査
 #            // dir[i]の方向の相手のコマの数を確認
 #            for (count = 0, value = put+dir[i];
@@ -68,7 +66,7 @@ h = " - o x\n"
 #
 #int main()
 def reversi(debug=False):
-    global board, move, turn, mobility, flip, index
+    global board, move, turn, mobility, flip
 #{
 #    // 0:コマ無し
 #    // 1:1player
@@ -118,8 +116,8 @@ def reversi(debug=False):
                     if debug:
                         move += 1
                     else:
-                        move, index = [int(i) for i in input().split()]
-                        move += index * 9
+                        x, y = [int(i) for i in input().split()]
+                        move = x + y * 9
                 else:
                     move += 1
                 check()
