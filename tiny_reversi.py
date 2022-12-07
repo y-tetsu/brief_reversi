@@ -66,28 +66,29 @@
 #    }
 #    return 0;
 #}
+DIRECTIONS = [-10, -9, -8, -1, 1, 8, 9, 10]
+DISCS = " - o x\n"
+
+
 def check(board, move, turn, flip=False):
-    directions = [-10, -9, -8, -1, 1, 8, 9, 10]
     can_move = False
     if not board[move]:
         for i in range(8):
-            count = value = move + directions[i]
+            count = value = move + DIRECTIONS[i]
             while board[value] == 3 - turn:
-                value += directions[i]
+                value += DIRECTIONS[i]
             if count != value and board[value] == turn:
                 can_move = True
                 value = move
-                if flip:
-                    while True:
-                        board[value] = turn
-                        value += directions[i];
-                        if board[value] == turn:
-                            break
+                while flip:
+                    board[value] = turn
+                    value += DIRECTIONS[i];
+                    if board[value] == turn:
+                        break
     return can_move
 
 
-def reversi(debug=False):
-    disc = " - o x\n"
+def reversi(com1=False, com2=False):
     turn = 1
     pre_pass = False
     board = [0] * 91
@@ -101,10 +102,10 @@ def reversi(debug=False):
             if check(board, i, turn, False) and not move:
                 move = i
             display = board[i] * 2
-            print(disc[display:display+2], end="")
+            print(DISCS[display:display+2], end="")
         if move:
             while not (pre_pass := False):
-                if not debug and turn == 2:
+                if not com1 and turn == 1 or not com2 and turn == 2:
                     x, y = [int(i) for i in input().split()]
                     move = x + y * 9
                 if check(board, move, turn, True):
@@ -119,4 +120,4 @@ def reversi(debug=False):
 
 
 if __name__ == '__main__':
-    reversi()
+    reversi(True, False)

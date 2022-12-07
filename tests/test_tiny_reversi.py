@@ -15,4 +15,4 @@ class TestTinyRevers(unittest.TestCase):
             3, 1, 1, 1, 2, 2, 1, 2, 2,
             3, 2, 2, 2, 2, 2, 2, 2, 2,
             3, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.assertEqual(reversi(True), expected)
+        self.assertEqual(reversi(True, True), expected)
