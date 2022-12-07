@@ -116,11 +116,11 @@ def reversi(debug=False):
                     move += 1
                 if check(board, move, turn, True):
                     break
-        elif not pre_pass:
+        else:
+            if pre_pass:
+                break
             pre_pass = True
             print("pass")
-        else:
-            break
         turn = 3 - turn
     return board
 
