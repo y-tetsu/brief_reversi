@@ -9,7 +9,6 @@
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
 
 mobility = 0
-flip = 0
 is_pass = 0
 board = [0] * 91
 directions = [-10, -9, -8, -1, 1, 8, 9, 10]
@@ -17,8 +16,8 @@ directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 #
 #void check()
 #{
-def check(move, turn):
-    global mobility, flip
+def check(move, turn, flip=False):
+    global mobility
 #    if (map[put] == 0)
     if board[move] == 0:
 #        for (i=0; i<8; i++) {
@@ -64,7 +63,7 @@ h = " - o x\n"
 #
 #int main()
 def reversi(debug=False):
-    global board, mobility, flip
+    global board, mobility
     turn = 1
 #{
 #    // 0:コマ無し
@@ -85,7 +84,6 @@ def reversi(debug=False):
 #    for (;; all = done = 0) { // 毎回allとdoneを初期化
     while True:
         mobility = 0
-        flip = 0
 
 #        // 盤の表示
 #        for(put = 9; put<82; ++put)
@@ -103,7 +101,6 @@ def reversi(debug=False):
 #            // 置けた(=allの値が変わった)らturn終了
 #            for(done = all = pass = put = 8; all==8; check())
 #                turn - 2 ? (scanf("%d %d",&put,&i), put+=i*9): ++put;
-            flip = 8
             mobility = 8
             is_pass = 8
             move = 8
@@ -116,7 +113,7 @@ def reversi(debug=False):
                         move = x + y * 9
                 else:
                     move += 1
-                check(move, turn)
+                check(move, turn, True)
 #
 #        else if(pass)
 #            // 駒は置けない
