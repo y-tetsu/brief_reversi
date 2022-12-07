@@ -88,9 +88,9 @@ def check(board, move, turn, flip=False):
 
 def reversi(debug=False):
     disc = " - o x\n"
-    board = [0] * 91
     turn = 1
     pre_pass = False
+    board = [0] * 91
     board[40] = board[50] = 1
     board[41] = board[49] = 2
     for i in range(1, 10):
