@@ -74,20 +74,19 @@ def reversi(debug=False):
 
 #    for (;; all = done = 0) { // 毎回allとdoneを初期化
     while True:
-        has_mobility = False
+        can_move = False
 #        // 盤の表示
 #        for(put = 9; put<82; ++put)
 #            check(), printf("%.2s",&h[map[put]*2]);
 #
         for i in range(9, 82):
             if check(board, i, turn, False):
-                has_mobility = True
-                no_pass = True
+                can_move = no_pass = True
             display = board[i] * 2
             print(disc[display:display+2], end="")
 
 #        if(all)
-        if has_mobility:
+        if can_move:
 
 #            // 1枚でも駒が置けた場合はcomは左上から走査
 #            // 置けた(=allの値が変わった)らturn終了
