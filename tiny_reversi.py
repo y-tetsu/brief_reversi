@@ -69,12 +69,10 @@ def reversi(debug=False):
 #    for(i=1, map[41] = map[49] = 2; i<10; map[i++*9] = 3)
 #        map[40] = map[50] = turn = pass = 1;
 #
-    board[41] = 2
-    board[49] = 2
+    board[40] = board[50] = 1
+    board[41] = board[49] = 2
     for i in range(1, 10):
         board[i*9] = 3
-        board[40] = 1
-        board[50] = 1
 
 #    for (;; all = done = 0) { // 毎回allとdoneを初期化
     while True:
