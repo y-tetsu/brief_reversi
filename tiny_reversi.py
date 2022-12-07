@@ -8,7 +8,6 @@
 #int put, turn, all, done, pass, count, value, i,
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
 
-mobility = 0
 is_pass = 0
 board = [0] * 91
 directions = [-10, -9, -8, -1, 1, 8, 9, 10]
@@ -17,8 +16,8 @@ directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 #void check()
 #{
 def check(move, turn, flip=False):
-    global mobility
 #    if (map[put] == 0)
+    can_move = False
     if board[move] == 0:
 #        for (i=0; i<8; i++) {
         for i in range(8):
@@ -38,7 +37,7 @@ def check(move, turn, flip=False):
 #                // 1枚以上存在し、その上端が自分のコマなら
 #                all += count;
 #                value  = put;
-                mobility += count
+                can_move = True
                 value = move
 #
 #                // doneがtrueの場合は、実際にひっくり返す
@@ -54,6 +53,7 @@ def check(move, turn, flip=False):
                         value += directions[i];
 #            }
 #        }
+    return can_move
 #}
 #
 # // mapに対応するオセロ駒＆改行
@@ -63,7 +63,7 @@ h = " - o x\n"
 #
 #int main()
 def reversi(debug=False):
-    global board, mobility
+    global board
     turn = 1
 #{
 #    // 0:コマ無し
@@ -83,28 +83,27 @@ def reversi(debug=False):
 
 #    for (;; all = done = 0) { // 毎回allとdoneを初期化
     while True:
-        mobility = 0
-
+        has_mobility = False
 #        // 盤の表示
 #        for(put = 9; put<82; ++put)
 #            check(), printf("%.2s",&h[map[put]*2]);
 #
         for i in range(9, 82):
-            check(i, turn)
+            if check(i, turn, False):
+                has_mobility = True
             display = board[i] * 2
             print(h[display:display+2], end="")
 
 #        if(all)
-        if mobility:
+        if has_mobility:
 
 #            // 1枚でも駒が置けた場合はcomは左上から走査
 #            // 置けた(=allの値が変わった)らturn終了
 #            for(done = all = pass = put = 8; all==8; check())
 #                turn - 2 ? (scanf("%d %d",&put,&i), put+=i*9): ++put;
-            mobility = 8
             is_pass = 8
             move = 8
-            while mobility == 8:
+            while True:
                 if turn == 2:
                     if debug:
                         move += 1
@@ -113,7 +112,8 @@ def reversi(debug=False):
                         move = x + y * 9
                 else:
                     move += 1
-                check(move, turn, True)
+                if check(move, turn, True):
+                    break
 #
 #        else if(pass)
 #            // 駒は置けない
