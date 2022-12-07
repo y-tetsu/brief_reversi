@@ -8,7 +8,6 @@
 #int put, turn, all, done, pass, count, value, i,
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
 
-is_pass = 0
 directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 
 #
@@ -78,7 +77,6 @@ def reversi(debug=False):
         board[i*9] = 3
         board[40] = 1
         board[50] = 1
-        is_pass = 1
 
 #    for (;; all = done = 0) { // 毎回allとdoneを初期化
     while True:
@@ -90,6 +88,7 @@ def reversi(debug=False):
         for i in range(9, 82):
             if check(board, i, turn, False):
                 has_mobility = True
+                pass_cnt = 0
             display = board[i] * 2
             print(h[display:display+2], end="")
 
@@ -100,7 +99,6 @@ def reversi(debug=False):
 #            // 置けた(=allの値が変わった)らturn終了
 #            for(done = all = pass = put = 8; all==8; check())
 #                turn - 2 ? (scanf("%d %d",&put,&i), put+=i*9): ++put;
-            is_pass = 8
             move = 8
             while True:
                 if turn == 2:
@@ -117,8 +115,8 @@ def reversi(debug=False):
 #        else if(pass)
 #            // 駒は置けない
 #            pass=0,printf("pass");
-        elif is_pass:
-            is_pass = 0
+        elif pass_cnt == 0:
+            pass_cnt += 1
             print("pass")
 
 #        else
