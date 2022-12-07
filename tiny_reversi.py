@@ -9,13 +9,12 @@
 #    map[90] = {0}, dir[]={-10, -9, -8, -1, 1, 8, 9, 10};
 
 is_pass = 0
-board = [0] * 91
 directions = [-10, -9, -8, -1, 1, 8, 9, 10]
 
 #
 #void check()
 #{
-def check(move, turn, flip=False):
+def check(board, move, turn, flip=False):
 #    if (map[put] == 0)
     can_move = False
     if board[move] == 0:
@@ -63,7 +62,7 @@ h = " - o x\n"
 #
 #int main()
 def reversi(debug=False):
-    global board
+    board = [0] * 91
     turn = 1
 #{
 #    // 0:コマ無し
@@ -89,7 +88,7 @@ def reversi(debug=False):
 #            check(), printf("%.2s",&h[map[put]*2]);
 #
         for i in range(9, 82):
-            if check(i, turn, False):
+            if check(board, i, turn, False):
                 has_mobility = True
             display = board[i] * 2
             print(h[display:display+2], end="")
@@ -112,7 +111,7 @@ def reversi(debug=False):
                         move = x + y * 9
                 else:
                     move += 1
-                if check(move, turn, True):
+                if check(board, move, turn, True):
                     break
 #
 #        else if(pass)
