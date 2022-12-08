@@ -1,2 +1,9 @@
-# tiny_reversi
-小さなリバーシプログラム
+# brief_reversi
+Pythonの短いリバーシプログラム
+
+- 標準ライブラリ未使用
+- flake8準拠
+
+## 参考
+- 「オセロプログラム ～7行のC言語で書くコンピュータ対局～」https://uguisu.skr.jp/othello/7gyou.html
+
