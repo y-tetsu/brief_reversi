@@ -78,8 +78,7 @@ def check(board, move, turn, flip=False):
             while board[value] == 3 - turn:
                 value += DIRECTIONS[i]
             if count != value and board[value] == turn:
-                can_move = True
-                value = move
+                value = can_move = move
                 while flip:
                     board[value] = turn
                     value += DIRECTIONS[i]
