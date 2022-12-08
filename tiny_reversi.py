@@ -95,8 +95,7 @@ def reversi(com1=False, com2=False):
     board[41] = board[49] = 2
     for i in range(1, 10):
         board[i*9] = 3
-    while True:
-        move = 0
+    while not (move := 0):
         for i in range(9, 82):
             if check(board, i, turn, False) and not move:
                 move = i
