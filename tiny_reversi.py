@@ -2,7 +2,7 @@ DIRECTIONS = [-10, -9, -8, -1, 1, 8, 9, 10]
 DISCS = " - o x\n"
 
 
-def check(board, move, turn, flip=False):
+def check_or_flip(board, move, turn, flip=False):
     can_move = False
     if not board[move]:
         for i in range(8):
@@ -23,7 +23,7 @@ def reversi(board, turn=1, com1=True, com2=False):
     end = False
     while not (move := 0):
         for i in range(9, 82):
-            if check(board, i, turn, False) and not move:
+            if check_or_flip(board, i, turn, flip=False) and not move:
                 move = i
             print(DISCS[board[i]*2:][:2], end="")
         if move:
@@ -31,7 +31,7 @@ def reversi(board, turn=1, com1=True, com2=False):
                 if not com1 and turn == 1 or not com2 and turn == 2:
                     x, y = [int(i) for i in input().split()]
                     move = x + y * 9
-                if check(board, move, turn, True):
+                if check_or_flip(board, move, turn, flip=True):
                     break
         else:
             if end:
