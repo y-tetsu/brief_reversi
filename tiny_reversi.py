@@ -88,7 +88,7 @@ def check(board, move, turn, flip=False):
 
 
 def reversi(board, turn=1, com1=True, com2=False):
-    pre_pass = False
+    end = False
     while not (move := 0):
         for i in range(9, 82):
             if check(board, i, turn, False) and not move:
@@ -96,16 +96,16 @@ def reversi(board, turn=1, com1=True, com2=False):
             display = board[i] * 2
             print(DISCS[display:display+2], end="")
         if move:
-            while not (pre_pass := False):
+            while not (end := False):
                 if not com1 and turn == 1 or not com2 and turn == 2:
                     x, y = [int(i) for i in input().split()]
                     move = x + y * 9
                 if check(board, move, turn, True):
                     break
         else:
-            if pre_pass:
+            if end:
                 break
-            pre_pass = True
+            end = True
             print("pass")
         turn = 3 - turn
     return board
