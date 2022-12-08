@@ -87,8 +87,7 @@ def check(board, move, turn, flip=False):
     return can_move
 
 
-def reversi(board, com1=False, com2=False):
-    turn = 1
+def reversi(board, turn, com1=False, com2=False):
     pre_pass = False
     while not (move := 0):
         for i in range(9, 82):
@@ -118,4 +117,4 @@ if __name__ == '__main__':
     board[41] = board[49] = 2
     for i in range(1, 10):
         board[i*9] = 3
-    reversi(board, True, False)
+    reversi(board, 1, True, False)
