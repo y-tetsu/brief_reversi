@@ -93,8 +93,7 @@ def reversi(board, turn=1, com1=True, com2=False):
         for i in range(9, 82):
             if check(board, i, turn, False) and not move:
                 move = i
-            display = board[i] * 2
-            print(DISCS[display:display+2], end="")
+            print(DISCS[board[i]*2:][:2], end="")
         if move:
             while not (end := False):
                 if not com1 and turn == 1 or not com2 and turn == 2:
