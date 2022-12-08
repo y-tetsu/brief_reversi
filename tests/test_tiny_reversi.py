@@ -15,4 +15,9 @@ class TestTinyRevers(unittest.TestCase):
             3, 1, 1, 1, 2, 2, 1, 2, 2,
             3, 2, 2, 2, 2, 2, 2, 2, 2,
             3, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.assertEqual(reversi(True, True), expected)
+        board = [0] * 91
+        board[40] = board[50] = 1
+        board[41] = board[49] = 2
+        for i in range(1, 10):
+            board[i*9] = 3
+        self.assertEqual(reversi(board, True, True), expected)
