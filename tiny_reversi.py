@@ -82,7 +82,7 @@ def check(board, move, turn, flip=False):
                 value = move
                 while flip:
                     board[value] = turn
-                    value += DIRECTIONS[i];
+                    value += DIRECTIONS[i]
                     if board[value] == turn:
                         break
     return can_move
