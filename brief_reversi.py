@@ -27,7 +27,6 @@ class BriefReversi:
                 end = True
                 print("pass")
             turn = 3 - turn
-        return self.board
 
     def _check(self, board, move, turn, flip=False):
         can_move = False
