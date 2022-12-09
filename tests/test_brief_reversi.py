@@ -1,5 +1,5 @@
 import unittest
-from brief_reversi import reversi
+from brief_reversi import BriefReversi
 
 
 class TestBriefRevers(unittest.TestCase):
@@ -15,8 +15,4 @@ class TestBriefRevers(unittest.TestCase):
             3, 1, 1, 1, 2, 2, 1, 2, 2,
             3, 2, 2, 2, 2, 2, 2, 2, 2,
             3, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        board = [0] * 91
-        board[40] = board[50] = 1
-        board[41] = board[49] = 2
-        board[9:90:9] = [3] * 9
-        self.assertEqual(reversi(board, 1, True, True), expected)
+        self.assertEqual(BriefReversi().start(1, True, True), expected)
