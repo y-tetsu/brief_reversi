@@ -11,7 +11,7 @@ class BriefReversi:
         end = False
         while not (move := 0):
             for i in range(9, 82):
-                if self._check(self.board, i, turn, flip=False) and not move:
+                if self._check(turn, self.board, i, flip=False) and not move:
                     move = i
                 print(self.discs[self.board[i]*2:][:2], end="")
             if move:
@@ -19,7 +19,7 @@ class BriefReversi:
                     if not com1 and turn == 1 or not com2 and turn == 2:
                         x, y = [int(i) for i in input().split()]
                         move = x + y * 9
-                    if self._check(self.board, move, turn, flip=True):
+                    if self._check(turn, self.board, move, flip=True):
                         break
             else:
                 if end:
@@ -28,21 +28,21 @@ class BriefReversi:
                 print("pass")
             turn = 3 - turn
 
-    def _check(self, board, move, turn, flip=False):
-        can_move = False
+    def _check(self, turn, board, move, flip=False):
+        ret = False
         if not board[move]:
             for i in range(8):
                 count = value = move + self.dirs[i]
                 while board[value] == 3 - turn:
                     value += self.dirs[i]
                 if count != value and board[value] == turn:
-                    value = can_move = move
+                    ret = value = move
                     while flip:
                         board[value] = turn
                         value += self.dirs[i]
                         if board[value] == turn:
                             break
-        return can_move
+        return ret
 
 
 if __name__ == '__main__':
