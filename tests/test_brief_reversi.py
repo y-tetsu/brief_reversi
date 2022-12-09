@@ -18,6 +18,5 @@ class TestBriefRevers(unittest.TestCase):
         board = [0] * 91
         board[40] = board[50] = 1
         board[41] = board[49] = 2
-        for i in range(1, 10):
-            board[i*9] = 3
+        board[9:90:9] = [3] * 9
         self.assertEqual(reversi(board, 1, True, True), expected)
