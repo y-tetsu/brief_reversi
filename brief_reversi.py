@@ -6,7 +6,7 @@ class BriefReversi:
         self.board[40] = self.board[50] = 1
         self.board[41] = self.board[49] = 2
 
-    def play(self, com1=True, com2=False, turn=1):
+    def play(self, com1=False, com2=True, turn=1):
         end = False
         while not (move := 0):
             for i in range(9, 82):
