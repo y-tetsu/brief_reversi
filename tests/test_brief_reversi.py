@@ -5,7 +5,7 @@ from brief_reversi import BriefReversi
 class TestBriefRevers(unittest.TestCase):
     def test_play_com_vs_com(self):
         expected = [
-            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            3, 0, 0, 0, 0, 0, 0, 0, 0,
             3, 1, 1, 1, 1, 1, 1, 1, 2,
             3, 1, 1, 1, 1, 1, 1, 1, 2,
             3, 1, 1, 1, 1, 1, 1, 1, 2,
@@ -14,7 +14,8 @@ class TestBriefRevers(unittest.TestCase):
             3, 1, 1, 2, 1, 1, 2, 1, 2,
             3, 1, 1, 1, 2, 2, 1, 2, 2,
             3, 2, 2, 2, 2, 2, 2, 2, 2,
-            3, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            3, 0, 0, 0, 0, 0, 0, 0, 0,
+            3]
         reversi = BriefReversi()
         reversi.play(com1=True, com2=True, turn=1)
         self.assertEqual(reversi.board, expected)

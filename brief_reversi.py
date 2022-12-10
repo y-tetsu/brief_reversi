@@ -2,10 +2,9 @@ class BriefReversi:
     def __init__(self):
         self.dirs = [-10, -9, -8, -1, 1, 8, 9, 10]
         self.discs = " - o x\n"
-        self.board = [0] * 91
+        self.board = [0 if i % 9 else 3 for i in range(91)]
         self.board[40] = self.board[50] = 1
         self.board[41] = self.board[49] = 2
-        self.board[9:90:9] = [3] * 9
 
     def play(self, com1=True, com2=False, turn=1):
         end = False
