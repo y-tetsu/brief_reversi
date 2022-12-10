@@ -1,7 +1,8 @@
 # brief_reversi
 Pythonの短いリバーシプログラム
 
-- 標準ライブラリ未使用
+- Python 3.9以上
+- ライブラリ未使用
 - flake8準拠
 
 ## 参考
