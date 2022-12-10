@@ -1,8 +1,8 @@
 import unittest
-from brief_reversi import BriefReversi
+from short_reversi import ShortReversi
 
 
-class TestBriefRevers(unittest.TestCase):
+class TestShortReversi(unittest.TestCase):
     def test_play_com_vs_com(self):
         expected = [
             3, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -16,6 +16,6 @@ class TestBriefRevers(unittest.TestCase):
             3, 2, 2, 2, 2, 2, 2, 2, 2,
             3, 0, 0, 0, 0, 0, 0, 0, 0,
             3]
-        reversi = BriefReversi()
+        reversi = ShortReversi()
         reversi.play(com1=True, com2=True)
         self.assertEqual(reversi.board, expected)

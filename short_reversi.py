@@ -1,4 +1,4 @@
-class BriefReversi:
+class ShortReversi:
     def __init__(self):
         self.dirs = [-10, -9, -8, -1, 1, 8, 9, 10]
         self.discs = ' - o x\n'
@@ -43,4 +43,4 @@ class BriefReversi:
 
 
 if __name__ == '__main__':
-    BriefReversi().play()
+    ShortReversi().play()

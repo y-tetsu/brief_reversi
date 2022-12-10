@@ -1,4 +1,4 @@
-# brief_reversi
+# short_reversi
 Pythonの短いリバーシプログラム
 
 - Python 3.9以上
