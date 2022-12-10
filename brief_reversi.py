@@ -27,8 +27,7 @@ class BriefReversi:
             self.turn = 3 - self.turn
 
     def _check(self, board, move, flip=False):
-        ret = False
-        if not board[move]:
+        if not (ret := False) and not board[move]:
             for i in range(8):
                 count = value = move + self.dirs[i]
                 while board[value] == 3 - self.turn:
