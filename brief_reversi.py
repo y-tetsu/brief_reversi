@@ -14,13 +14,12 @@ class BriefReversi:
                 if self._check(turn, self.board, i, flip=False) and not move:
                     move = i
                 print(self.discs[self.board[i]*2:][:2], end="")
-            if move:
-                while not (end := False):
-                    if not com1 and turn == 1 or not com2 and turn == 2:
-                        x, y = [int(i) for i in input().split()]
-                        move = x + y * 9
-                    if self._check(turn, self.board, move, flip=True):
-                        break
+            while move and not (end := False):
+                if not com1 and turn == 1 or not com2 and turn == 2:
+                    x, y = [int(i) for i in input().split()]
+                    move = x + y * 9
+                if self._check(turn, self.board, move, flip=True):
+                    break
             else:
                 if end:
                     break
