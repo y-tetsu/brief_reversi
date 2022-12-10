@@ -17,5 +17,5 @@ class TestBriefRevers(unittest.TestCase):
             3, 0, 0, 0, 0, 0, 0, 0, 0,
             3]
         reversi = BriefReversi()
-        reversi.play(com1=True, com2=True, turn=1)
+        reversi.play(com1=True, com2=True)
         self.assertEqual(reversi.board, expected)
