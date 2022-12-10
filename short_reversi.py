@@ -22,8 +22,7 @@ class ShortReversi:
             else:
                 if end:
                     break
-                end = True
-                print('pass')
+                end, _ = True, print('pass')
             self.turn = 3 - self.turn
 
     def _check(self, board, move, flip=False):
