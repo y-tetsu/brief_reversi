@@ -7,7 +7,7 @@ class BriefReversi:
         self.board[41] = self.board[49] = 2
         self.board[9:90:9] = [3] * 9
 
-    def start(self, turn=1, com1=True, com2=False):
+    def play(self, com1=True, com2=False, turn=1):
         end = False
         while not (move := 0):
             for i in range(9, 82):
@@ -46,4 +46,4 @@ class BriefReversi:
 
 
 if __name__ == '__main__':
-    BriefReversi().start()
+    BriefReversi().play()
